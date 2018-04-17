@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_room, only: [:show, :edit, :destroy, :create]
+  before_action :set_hotel, only: [:show, :edit, :destroy, :create]
 
   def index
     @bookings = Booking.where(user: current_user)
@@ -13,7 +13,11 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.room = @room
-    @booking.save
+    if @booking.save
+      redirect_to bookings_path
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -25,7 +29,7 @@ class BookingsController < ApplicationController
   private
 
   def set_room
-    @room = Room.find(params[:id])
+    @room = Room.find(params[:room_id])
   end
 
   def booking_params
