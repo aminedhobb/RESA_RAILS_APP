@@ -1,0 +1,21 @@
+<h1 class="text-center">Your Hotel list</h1>
+
+<div class="text-center padded">
+  <%= link_to "Add a hotel", new_hotel_path, class: "btn btn-primary" %>
+</div>
+
+<div class="container">
+  <div class="row">
+    <% @hotels.each do |hotel| %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <%= link_to hotel.name, hotel_path(hotel) %>
+          <%= link_to "Edit", edit_hotel_path(hotel) %>
+          <%= link_to "Delete", hotel_path(hotel), method: :delete, data: {confirm: "Are you sure?"} %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
