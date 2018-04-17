@@ -5,10 +5,8 @@ Rails.application.routes.draw do
     end
     resources :reviews
   end
-  resources :cities, only: [:show]
-  root "hotels#index"
 
   devise_for :users
-  root to: 'pages#home'
+  root to: 'hotels#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
