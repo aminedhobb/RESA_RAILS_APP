@@ -6,7 +6,7 @@ class CreateRooms < ActiveRecord::Migration[5.1]
       t.integer :capacity
       t.text :category
       t.text :photos
-      t.references :hotel
+      t.references :hotel, foreign_key: true
 
       t.timestamps
     end
