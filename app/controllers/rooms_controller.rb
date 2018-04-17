@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
 
-before_action :set_hotel
+before_action :set_hotel only: [:index, :show, :new, :create]
+before_action :set_room only: [:edit, :update, :destroy,]
 
   def index
     @rooms = Room.all
@@ -15,11 +16,11 @@ before_action :set_hotel
 
   def create
     @room = Room.create!(room_params)
-    @room = @room.hotel
-    if room saves
+    @room.hotel = @hotel
+    if @room.save
       link_to hotel_path(@hotel), notice: 'Room was successfully created.'
     else
-      render new
+      render :new
     end
   end
 
@@ -40,6 +41,10 @@ before_action :set_hotel
 
   def set_hotel
     @hotel = Hotel.find(params[:id])
+  end
+
+  def set_room
+    @room = Room.find([params[:id])
   end
 
   def room_params
