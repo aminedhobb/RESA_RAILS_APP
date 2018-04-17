@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
-  before_action :set_hotel, only: [:show, :edit, :update, :destroy]
+  before_action :set_hotel, only: [:show, :index, :new, :create]
+  before_action :set_review, only:[:edit, :update, :destroy]
   def index
     @reviews = Review.all
   end
@@ -38,6 +39,10 @@ class ReviewsController < ApplicationController
 
   def set_hotel
     @hotel = Hotel.find(params[:hotel_id])
+  end
+
+  def set_review
+    @review = Review.find(params[:review_id])
   end
 
   def review_params
