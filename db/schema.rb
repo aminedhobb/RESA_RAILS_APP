@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20180417112754) do
+ActiveRecord::Schema.define(version: 20180417132923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,18 +26,11 @@ ActiveRecord::Schema.define(version: 20180417112754) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
-  create_table "reviews", force: :cascade do |t|
-    t.text "content"
-    t.integer "rating"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
 
   create_table "hotels", force: :cascade do |t|
     t.integer "stars"
@@ -50,18 +42,24 @@ ActiveRecord::Schema.define(version: 20180417112754) do
     t.index ["city_id"], name: "index_hotels_on_city_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.text "content"
+    t.integer "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "rooms", force: :cascade do |t|
     t.boolean "status"
     t.integer "price"
     t.integer "capacity"
     t.text "category"
     t.text "photos"
+    t.bigint "hotel_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "hotel_id"
     t.index ["hotel_id"], name: "index_rooms_on_hotel_id"
   end
-
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -80,8 +78,7 @@ ActiveRecord::Schema.define(version: 20180417112754) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "rooms"
+  add_foreign_key "bookings", "users"
   add_foreign_key "hotels", "cities"
-
-  add_foreign_key "rooms", "hotels"
-
 end
