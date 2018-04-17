@@ -1,9 +1,7 @@
 <%= simple_form_for @hotel do |f| %>
   <%= f.input :name %>
   <%= f.input :address %>
-<<<<<<< HEAD
-=======
-
->>>>>>> master
+  <%= f.input :city_id, collection: City.all %>
+  <%= f.input :stars, collection: (0..5) %>
   <%= f.button :submit %>
 <% end %>
