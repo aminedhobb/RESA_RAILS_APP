@@ -1,4 +1,5 @@
 class HotelsController < ApplicationController
+  before_action :set_hotel, only: [:show,:edit,:update,:destroy]
   def index
     @hotels = Hotel.all
   end
@@ -14,12 +15,10 @@ class HotelsController < ApplicationController
 
   def create
     @hotel = Hotel.new(hotel_params)
-    @city = City.find(params[:city_id])
-    @hotel.city = @city
     if @hotel.save
       redirect_to hotel_path(@hotel)
     else
-      render 'new'
+      render :new
     end
   end
 
