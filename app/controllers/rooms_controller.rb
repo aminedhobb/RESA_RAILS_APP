@@ -11,9 +11,6 @@ skip_after_action :verify_authorized
 
   def show
     @room_attachments = @room.room_attachments.all
-  end
-
-  def show
     authorize @room
   end
 
@@ -26,9 +23,10 @@ skip_after_action :verify_authorized
   def create
     @room = Room.new(room_params)
     @room.hotel = @hotel
+
     if @room.save
       params[:room_attachments]['photo'].each do |a|
-        @room.room_attachments.create!(:photo => a)
+        @room_attachment = @room.room_attachments.create!(:photo => a)
       end
       redirect_to hotel_path(@hotel)
     else
