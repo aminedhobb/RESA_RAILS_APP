@@ -3,6 +3,9 @@ ruby '2.4.3'
 #faker
 gem 'faker'
 
+#Geolocalisation
+gem 'geocoder'
+
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
