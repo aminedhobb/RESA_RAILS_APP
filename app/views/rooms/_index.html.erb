@@ -9,7 +9,7 @@
             <%= room.price %>
           </td>
           <td>
-            <% @room_attachments.each do |p| %>
+            <% room.room_attachments.each do |p| %>
               <%= image_tag p.avatar_url %>
               <%= link_to "Edit Attachment", edit_room_attachment_path(p) %>
             <% end %>

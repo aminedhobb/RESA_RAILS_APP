@@ -29,6 +29,7 @@ skip_after_action :verify_authorized
     if @room.save
       params[:room_attachments]['photo'].each do |a|
       @room_attachment = @room.room_attachments.create!(:photo => a)
+      end
       redirect_to hotel_path(@hotel), notice: 'Room was successfully created.'
     else
       render :new

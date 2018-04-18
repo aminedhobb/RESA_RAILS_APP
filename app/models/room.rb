@@ -4,10 +4,7 @@ class Room < ApplicationRecord
   validates :capacity, presence: true
   validates :category, presence: true
   validates :photos, presence: true
-<<<<<<< HEAD
   belongs_to :hotel
-=======
   has_many :room_attachments
   accepts_nested_attributes_for :room_attachments
->>>>>>> master
 end
