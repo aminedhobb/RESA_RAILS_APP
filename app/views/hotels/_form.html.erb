@@ -1,6 +1,6 @@
 <%= simple_form_for @hotel do |f| %>
   <%= f.input :name %>
-  <%= f.input :address %>
+  <%= f.input :address, input_html: {id: "flat_address"} %>
   <%= f.input :stars, collection: (0..5) %>
   <%= f.button :submit %>
 <% end %>

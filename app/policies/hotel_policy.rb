@@ -4,4 +4,10 @@ class HotelPolicy < ApplicationPolicy
       scope
     end
   end
+
+  def create?
+    true
+  end
+
+  def
 end
