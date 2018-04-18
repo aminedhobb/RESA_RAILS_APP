@@ -5,24 +5,3 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-cities = [{
-    name: 'Rabat'
-  },
-  {
-    name: 'Casablanca'
-  },
-  {
-    name: 'Agadir'
-  },
-  {
-    name: 'Imilchil'
-  },
-  {
-    name: 'Marrakech'
-  },
-  {
-    name: 'Tanger'
-  }
-]
-City.create!(cities)
-puts "Finished!"
