@@ -57,9 +57,9 @@ ActiveRecord::Schema.define(version: 20180417150620) do
     t.integer "capacity"
     t.text "category"
     t.text "photos"
-    t.bigint "hotel_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "hotel_id"
     t.index ["hotel_id"], name: "index_rooms_on_hotel_id"
   end
 
@@ -80,6 +80,8 @@ ActiveRecord::Schema.define(version: 20180417150620) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "rooms"
+  add_foreign_key "bookings", "users"
   add_foreign_key "hotels", "cities"
   add_foreign_key "reviews", "hotels"
   add_foreign_key "rooms", "hotels"

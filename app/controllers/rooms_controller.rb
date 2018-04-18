@@ -49,6 +49,6 @@ before_action :set_room only: [:edit, :update, :destroy,]
   end
 
   def room_params
-    params.require(:room).permit(:status :price :capacity :category :photos)
+    params.require(:room).permit(:status, :price, :capacity, :category, :photos)
   end
 end
