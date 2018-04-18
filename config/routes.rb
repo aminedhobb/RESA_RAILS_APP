@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :hotels do
-    resources :rooms, only: [:index, :new, :create]
+    resources :rooms, only: [:new, :create]
     resources :bookings, only: [:index, :new, :create, :show]
     resources :reviews, only: [:index, :new, :create]
   end

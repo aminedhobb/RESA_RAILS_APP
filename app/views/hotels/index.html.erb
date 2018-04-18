@@ -1,8 +1,6 @@
-<h1 class="text-center">Your Hotel list</h1>
+<h1 class="text-center">Hotels</h1>
 
-<div class="text-center padded">
-  <%= link_to "Add a hotel", new_hotel_path, class: "btn btn-primary" %>
-</div>
+
 
 <div class="container">
   <div class="row">
@@ -16,10 +14,13 @@
             <% end %>
             <% if policy(hotel).destroy? %>
             <%= link_to "Delete", hotel_path(hotel), method: :delete, data: {confirm: "Are you sure?"} %>
-          <% end %>
+            <% end %>
         </div>
       </div>
     </div>
     <% end %>
+  </div>
+  <div class="text-center padded">
+    <%= link_to "Add a hotel", new_hotel_path, class: "btn btn-primary" %>
   </div>
 </div>

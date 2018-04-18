@@ -1,12 +1,8 @@
 class RoomsController < ApplicationController
 
-skip_before_action :authenticate_user!, only: [:index, :show]
-before_action :set_hotel, only: [:index, :show, :new, :create]
+skip_before_action :authenticate_user!, only: [:show]
+before_action :set_hotel, only: [:new, :create]
 before_action :set_room, only: [:edit, :update, :destroy]
-
-  def index
-    @rooms = policy_scope(Room)
-  end
 
   def show
     authorize @room
@@ -55,6 +51,6 @@ before_action :set_room, only: [:edit, :update, :destroy]
   end
 
   def room_params
-    params.require(:room).permit(:status, :price, :capacity, :category, :photos)
+    params.require(:room).permit(:price, :capacity, :category, :photos)
   end
 end
