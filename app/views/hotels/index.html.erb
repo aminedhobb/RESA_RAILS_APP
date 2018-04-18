@@ -11,8 +11,10 @@
       <div class="card text-center">
         <div class="card-body">
           <%= link_to hotel.name, hotel_path(hotel) %>
-          <%= link_to "Edit", edit_hotel_path(hotel) %>
-          <%= link_to "Delete", hotel_path(hotel), method: :delete, data: {confirm: "Are you sure?"} %>
+          <% if current_user == hotel.user %>
+            <%= link_to "Edit", edit_hotel_path(hotel) %>
+            <%= link_to "Delete", hotel_path(hotel), method: :delete, data: {confirm: "Are you sure?"} %>
+          <% end %>
         </div>
       </div>
     </div>
