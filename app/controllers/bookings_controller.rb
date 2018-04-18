@@ -42,6 +42,6 @@ class BookingsController < ApplicationController
   def available_rooms
     @hotel = Hotel.find(params[:hotel_id])
     @rooms = hotel.rooms
-
+  end
 
 end
