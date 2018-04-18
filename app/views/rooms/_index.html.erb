@@ -1,13 +1,12 @@
-
       <table>
         <% @hotel.rooms.each do |room| %>
         <tr>
           <td>
-            <%= hotel.room.category %>
-            <%= hotel.room.capacity %>
+            <%= room.category %>
+            <%= room.capacity %>
           </td>
           <td>
-            <%= hotel.room.price %>
+            <%= room.price %>
           </td>
           <td>
             <% @room_attachments.each do |p| %>
@@ -28,4 +27,3 @@
       <h3>Customer dashboard</h3>
       <%= link_to "Book the room", "#" %>
   </div>
-

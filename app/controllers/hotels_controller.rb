@@ -3,12 +3,20 @@ class HotelsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @hotels = policy_scope(Hotel)
+    if params[:city].present?
+        @hotels = Hotel.near(params[:city],50)
+      else
+        @hotels = Hotel.all
+    end
   end
 
   def show
     @hotel = Hotel.find(params[:id])
     @hotel_attachments = @hotel.hotel_attachments.all
+
+
+   # @bookings = Booking.where("arriving_date >= ? AND departing_date <= ?")
+
     @markers =
       [{
         lat: @hotel.latitude,

@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20180418141743) do
     t.float "latitude"
     t.float "longitude"
     t.bigint "user_id"
+    t.index ["city_id"], name: "index_hotels_on_city_id"
     t.index ["user_id"], name: "index_hotels_on_user_id"
   end
 
@@ -97,6 +98,7 @@ ActiveRecord::Schema.define(version: 20180418141743) do
   add_foreign_key "bookings", "rooms"
   add_foreign_key "bookings", "users"
   add_foreign_key "hotel_attachments", "hotels"
+  add_foreign_key "hotels", "cities"
   add_foreign_key "hotels", "users"
   add_foreign_key "reviews", "hotels"
   add_foreign_key "room_attachments", "rooms"
