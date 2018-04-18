@@ -9,19 +9,25 @@
             <%= room.price %>
           </td>
           <td>
-            <% @room_attachments.each do |p| %>
+            <% room.room_attachments.each do |p| %>
               <%= image_tag p.avatar_url %>
               <%= link_to "Edit Attachment", edit_room_attachment_path(p) %>
             <% end %>
           </td>
+          <td>
+            <%if policy(room).edit? %>
+              <%= link_to "Edit", edit_room_path(@hotel) %>
+            <% end %>
+          </td>
+          <%if policy(room).destroy? %>
+              <%= link_to "Delete", hotel_path(@hotel), method: :delete, data: {confirm: "Are you sure?"} %>
+            <% end %>
         </tr>
         <% end %>
       </table>
     <div class="list" >
       <h3>Hotel dashboard</h3>
       <%= link_to "Add a room", new_hotel_room_path(@hotel) %>
-      <%= link_to "Edit", edit_room_path(@hotel) %>
-      <%= link_to "Delete", hotel_path(@hotel), method: :delete, data: {confirm: "Are you sure?"} %>
     </div>
     <div class="list" >
       <h3>Customer dashboard</h3>

@@ -59,6 +59,7 @@ class HotelsController < ApplicationController
   def destroy
     @hotel.destroy
     redirect_to hotels_path
+    authorize @hotel
   end
 
   private
