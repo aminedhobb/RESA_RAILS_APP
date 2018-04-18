@@ -1,12 +1,12 @@
 class RoomsController < ApplicationController
 
 skip_before_action :authenticate_user!, only: [:show]
-before_action :set_hotel, only: [:new, :create]
+before_action :set_hotel, only: [:index, :new, :create]
 before_action :set_room, only: [:edit, :update, :destroy]
 skip_after_action :verify_authorized
 
   def index
-    @rooms = Room.all
+    @rooms = Room.where(hotel: @hotel)
   end
 
   def show
@@ -28,9 +28,9 @@ skip_after_action :verify_authorized
     @room.hotel = @hotel
     if @room.save
       params[:room_attachments]['photo'].each do |a|
-      @room_attachment = @room.room_attachments.create!(:photo => a)
+        @room.room_attachments.create!(:photo => a)
       end
-      redirect_to hotel_path(@hotel), notice: 'Room was successfully created.'
+      redirect_to hotel_path(@hotel)
     else
       render :new
     end
