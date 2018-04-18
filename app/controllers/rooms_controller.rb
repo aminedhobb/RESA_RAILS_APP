@@ -41,14 +41,14 @@ before_action :set_room only: [:edit, :update, :destroy,]
   private
 
   def set_hotel
-    @hotel = Hotel.find(params[:id])
+    @hotel = Hotel.find(params[:hotel_id])
   end
 
   def set_room
-    @room = Room.find([params[:id])
+    @room = Room.find([params[:room_id])
   end
 
   def room_params
-    params.require(:room).permit(:status :price :capacity :category :photos)
+    params.require(:room).permit(:status, :price, :capacity, :category, :photos)
   end
 end
