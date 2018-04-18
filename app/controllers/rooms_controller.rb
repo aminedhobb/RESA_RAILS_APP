@@ -5,9 +5,6 @@ before_action :set_hotel, only: [ :new, :create]
 before_action :set_room, only: [:edit, :update, :destroy]
 
 
-
-
-
   def new
     @room = Room.new
   end
