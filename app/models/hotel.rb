@@ -6,4 +6,5 @@ class Hotel < ApplicationRecord
   has_many :rooms, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :bookings, through: :rooms
+  belongs_to :user
 end
