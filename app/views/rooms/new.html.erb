@@ -2,7 +2,6 @@
   <%= f.input :category %>
   <%= f.input :capacity %>
   <%= f.input :price %>
-  <%= f.input :photos %>
   <%= f.fields_for :room_attachments do |p| %>
     <%= p.label :photo %>
     <%= p.file_field :photo, :multiple => true, name: "room_attachments[photo][]" %>
