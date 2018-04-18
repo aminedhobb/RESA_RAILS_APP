@@ -1,15 +1,12 @@
 class RoomsController < ApplicationController
 
-skip_before_action :authenticate_user!, only: [:index, :show]
-before_action :set_hotel, only: [:index, :show, :new, :create]
+skip_before_action :authenticate_user!, only: [:show]
+before_action :set_hotel, only: [ :new, :create]
 before_action :set_room, only: [:edit, :update, :destroy]
 
-  def index
-    @rooms = Room.all
-  end
 
-  def show
-  end
+
+
 
   def new
     @room = Room.new
