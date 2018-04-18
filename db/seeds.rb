@@ -28,12 +28,14 @@ hotels = [
     name:         'Kenzi Basma Hotel',
     stars:      4,
     address:  'Avenue Moulay Hassan 1er, Casablanca 22000',
+
     user_id: reda.id
   },
   {
     name:         'Hotel Suisse',
     stars:      4,
     address:  'Boulevard De La Corniche, ain diab، Casablanca 20600',
+
     user_id: reda.id
   },
   {
