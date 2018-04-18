@@ -3,6 +3,15 @@ class RoomsController < ApplicationController
 skip_before_action :authenticate_user!, only: [:show]
 before_action :set_hotel, only: [:new, :create]
 before_action :set_room, only: [:edit, :update, :destroy]
+skip_after_action :verify_authorized
+
+  def index
+    @rooms = Room.all
+  end
+
+  def show
+    @room_attachments = @room.room_attachments.all
+  end
 
   def show
     authorize @room
@@ -10,6 +19,7 @@ before_action :set_room, only: [:edit, :update, :destroy]
 
   def new
     @room = Room.new
+    @room_attachment = @room.room_attachments.build
     authorize @room
   end
 
@@ -17,6 +27,8 @@ before_action :set_room, only: [:edit, :update, :destroy]
     @room = Room.new(room_params)
     @room.hotel = @hotel
     if @room.save
+      params[:room_attachments]['photo'].each do |a|
+      @room_attachment = @room.room_attachments.create!(:photo => a)
       redirect_to hotel_path(@hotel), notice: 'Room was successfully created.'
     else
       render :new
@@ -30,7 +42,7 @@ before_action :set_room, only: [:edit, :update, :destroy]
 
   def update
     @room.hotel.update(room_params)
-    redirect_to hotel_path(@hotel), notice: 'Room was successfully upddated.'
+    redirect_to hotel_path(@hotel), notice: 'Room was successfully updated.'
     authorize @room
   end
 
@@ -51,6 +63,6 @@ before_action :set_room, only: [:edit, :update, :destroy]
   end
 
   def room_params
-    params.require(:room).permit(:price, :capacity, :category, :photos)
+    params.require(:room).permit(:price, :capacity, :category, post_attachments_attributes: [:id, :room_id, :photo])
   end
 end

@@ -1,1 +1,29 @@
-
+      <table>
+        <% @hotel.rooms.each do |room| %>
+        <tr>
+          <td>
+            <%= room.category %>
+            <%= room.capacity %>
+          </td>
+          <td>
+            <%= room.price %>
+          </td>
+          <td>
+            <% @room_attachments.each do |p| %>
+              <%= image_tag p.avatar_url %>
+              <%= link_to "Edit Attachment", edit_room_attachment_path(p) %>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    <div class="list" >
+      <h3>Hotel dashboard</h3>
+      <%= link_to "Add a room", new_hotel_room_path(@hotel) %>
+      <%= link_to "Edit", edit_room_path(@hotel) %>
+      <%= link_to "Delete", hotel_path(@hotel), method: :delete, data: {confirm: "Are you sure?"} %>
+    </div>
+    <div class="list" >
+      <h3>Customer dashboard</h3>
+      <%= link_to "Book the room", "#" %>
+  </div>

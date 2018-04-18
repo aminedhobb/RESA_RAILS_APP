@@ -12,6 +12,8 @@ class HotelsController < ApplicationController
 
   def show
     @hotel = Hotel.find(params[:id])
+    @hotel_attachments = @hotel.hotel_attachments.all
+
 
    # @bookings = Booking.where("arriving_date >= ? AND departing_date <= ?")
 
@@ -26,6 +28,7 @@ class HotelsController < ApplicationController
 
   def new
     @hotel = Hotel.new
+    @hotel_attachment = @hotel.hotel_attachments.build
     authorize @hotel
   end
 
@@ -33,6 +36,9 @@ class HotelsController < ApplicationController
     @hotel = Hotel.new(hotel_params)
     @hotel.user = current_user
     if @hotel.save
+      params[:hotel_attachments]['photo'].each do |a|
+      @hotel_attachment = @hotel.hotel_attachments.create!(:photo => a)
+      end
       redirect_to hotel_path(@hotel)
     else
       render :new
@@ -59,7 +65,7 @@ class HotelsController < ApplicationController
   private
 
   def hotel_params
-    params.require(:hotel).permit(:name, :address, :stars)
+    params.require(:hotel).permit(:name, :address, :stars, hotel_attachments_attributes: [:id, :hotel_id, :photo])
   end
 
   def set_hotel
