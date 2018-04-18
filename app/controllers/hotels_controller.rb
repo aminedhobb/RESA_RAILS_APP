@@ -1,8 +1,9 @@
 class HotelsController < ApplicationController
   before_action :set_hotel, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
-    @hotels = Hotel.all
+    @hotels = policy_scope(Hotel)
   end
 
   def show
@@ -13,27 +14,33 @@ class HotelsController < ApplicationController
         lng: @hotel.longitude,
         # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
       }]
+    authorize @hotel
   end
 
   def new
     @hotel = Hotel.new
+    authorize @hotel
   end
 
   def create
     @hotel = Hotel.new(hotel_params)
+    @hotel.user = current_user
     if @hotel.save
       redirect_to hotel_path(@hotel)
     else
       render :new
     end
+    authorize @hotel
   end
 
   def edit
+    authorize @hotel
   end
 
   def update
     @hotel.update(hotel_params)
     redirect_to hotel_path(@hotel)
+    authorize @hotel
   end
 
   def destroy
