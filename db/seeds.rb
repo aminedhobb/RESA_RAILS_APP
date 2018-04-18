@@ -5,6 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts 'Cleaning database...'
+Hotel.destroy_all
+
+users = [
+  {
+  first_name: 'best'
+  last_name: 'batch'
+  email: 'batch118@lewagon.org',
+  password: 'werockguys',
+  }
+]
+User.create!(users)
+
 hotels = [
   {
     name:         'Hotel Movenpick Casablanca',
@@ -61,6 +74,46 @@ hotels = [
     stars:      5,
     address:  'Rue Sidi Belyout, Casablanca 20000',
   },
+  {
+    name:         'Es Saadi Marrakech',
+    stars:      5,
+    address:  'Rue Ibrahim El Mazini, Marrakesh 40000',
+  },
+  {
+    name:         'Mogador KASBAH - Hôtel & Spa',
+    stars:      4,
+    address:  ' Avenue Mehdi Ben Barka, Marrakech',
+  },
+  {
+    name:         'Murano Resort Marrakech Hôtel',
+    stars:      4,
+    address:  'Douar Abiad, la palmeraie 13172 , Marrakech-Royaume du Maroc، Marrakesh 44000',
+  },
+  {
+    name:         'Hôtel Almas',
+    stars:      3,
+    address:  'Boulevard Moulay Rachid, Marrakech 40000',
+  },
+  {
+    name:         'Riad Lotus Privilège',
+    stars:      3,
+    address:  '9 sidi ali ben hamdouch, Dar El Bacha، Marrakesh 40000',
+  },
+  {
+    name:         'Hotel Club Le Mirage Tanger',
+    stars:      5,
+    address:  "Route des Grottes d'Hercule, Tanger 2198",
+  },
+  {
+    name:         'Hôtel la Tour Hassan Palace',
+    stars:      5,
+    address:  '26, Avenue Chellah B.P. 14، Rabat 10000',
+  },
+  {
+    name:         'Hôtel Menzeh Zalagh',
+    stars:      4,
+    address:  '10 Rue Mohammed Diouri, Fes 30000',
+  }
 ]
 Hotel.create!(hotels)
 puts "Finished!"
