@@ -1,8 +1,6 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-4">
+
       <table>
-        <% @hotel.room.each do |room| %>
+        <% @hotel.rooms.each do |room| %>
         <tr>
           <td>
             <%= hotel.room.category %>
@@ -17,17 +15,14 @@
         </tr>
         <% end %>
       </table>
-    </div>
     <div class="list" >
       <h3>Hotel dashboard</h3>
-      <%= link_to "Add a room", new_hotel_room_path(hotel) %>
-      <%= link_to "Edit", edit_room_path(hotel) %>
-      <%= link_to "Delete", hotel_path(hotel), method: :delete, data: {confirm: "Are you sure?"} %>
+      <%= link_to "Add a room", new_hotel_room_path(@hotel) %>
+      <%= link_to "Edit", edit_room_path(@hotel) %>
+      <%= link_to "Delete", hotel_path(@hotel), method: :delete, data: {confirm: "Are you sure?"} %>
     </div>
     <div class="list" >
       <h3>Customer dashboard</h3>
       <%= link_to "Book the room", "#" %>
-    </div>
   </div>
-</div>
 

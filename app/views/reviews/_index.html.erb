@@ -1,0 +1,13 @@
+<br/>
+<h3>Reviews:</h3>
+<ul class="list-unstyled">
+  <% @hotel.reviews.each do |review| %>
+  <li class='padded-1em'>
+    <%= review.content %>
+    <%= review.rating %> / 5
+
+  </li>
+<% end %>
+</ul>
+<%= link_to 'Add a review', new_hotel_review_path(@hotel) %>
+
