@@ -2,7 +2,7 @@ class HotelsController < ApplicationController
   before_action :set_hotel, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
-    @hotels = Hotel.all
+    @hotels = Hotel.near(params[:city],30)
   end
 
   def show
