@@ -3,6 +3,10 @@
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <%= @hotel.name %>
       <%= @hotel.address %>
+      <% @hotel_attachments.each do |p| %>
+        <%= image_tag p.photo_url %>
+        <%= link_to "Edit Attachment", edit_hotel_attachment_path(p) %>
+      <% end %>
       <%= link_to 'Home', hotels_path %>
       <table>
         <% @hotel.rooms.each do |room| %>

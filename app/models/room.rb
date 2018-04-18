@@ -4,4 +4,6 @@ class Room < ApplicationRecord
   validates :capacity, presence: true
   validates :category, presence: true
   validates :photos, presence: true
+  has_many :room_attachments
+  accepts_nested_attributes_for :room_attachments
 end

@@ -26,6 +26,14 @@ ActiveRecord::Schema.define(version: 20180418141743) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
+  create_table "hotel_attachments", force: :cascade do |t|
+    t.string "photo"
+    t.bigint "hotel_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hotel_id"], name: "index_hotel_attachments_on_hotel_id"
+  end
+
   create_table "hotels", force: :cascade do |t|
     t.integer "stars"
     t.string "name"
@@ -46,6 +54,14 @@ ActiveRecord::Schema.define(version: 20180418141743) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hotel_id"], name: "index_reviews_on_hotel_id"
+  end
+
+  create_table "room_attachments", force: :cascade do |t|
+    t.string "photo"
+    t.bigint "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_room_attachments_on_room_id"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -81,8 +97,10 @@ ActiveRecord::Schema.define(version: 20180418141743) do
 
   add_foreign_key "bookings", "rooms"
   add_foreign_key "bookings", "users"
+  add_foreign_key "hotel_attachments", "hotels"
   add_foreign_key "hotels", "cities"
   add_foreign_key "hotels", "users"
   add_foreign_key "reviews", "hotels"
+  add_foreign_key "room_attachments", "rooms"
   add_foreign_key "rooms", "hotels"
 end
