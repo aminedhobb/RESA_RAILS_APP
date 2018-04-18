@@ -1,6 +1,4 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-4">
+
       <table>
         <% @hotel.rooms.each do |room| %>
         <tr>
@@ -20,7 +18,6 @@
         </tr>
         <% end %>
       </table>
-    </div>
     <div class="list" >
       <h3>Hotel dashboard</h3>
       <%= link_to "Add a room", new_hotel_room_path(@hotel) %>
@@ -30,7 +27,5 @@
     <div class="list" >
       <h3>Customer dashboard</h3>
       <%= link_to "Book the room", "#" %>
-    </div>
   </div>
-</div>
 

@@ -1,5 +1,5 @@
-<div class="container">
-  <div class="row">
+<div class="main-container">
+  <div class="container">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <%= @hotel.name %>
       <%= @hotel.address %>
@@ -8,6 +8,11 @@
         <%= link_to "Edit Attachment", edit_hotel_attachment_path(p) %>
       <% end %>
       <%= link_to 'Home', hotels_path %>
+      <%= render '/rooms/index' %>
+      <%= render '/reviews/index' %>
     </div>
   </div>
+  <div id="map" style="width: 25%" data-markers="<%= @markers.to_json %>"></div>
 </div>
+
+
