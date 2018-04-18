@@ -1,7 +1,10 @@
-<%= simple_form_for @hotel, :html => { :multipart => true }) do |f| %>
+<%= simple_form_for @hotel, :html => { :multipart => true } do |f| %>
   <%= f.input :name %>
   <%= f.input :address, input_html: {id: "flat_address"} %>
   <%= f.input :stars, collection: (0..5) %>
-  <%= f.input :avatar, :multiple => true, name: "hotel_attachments[photo][]" %>
+  <%= f.fields_for :hotel_attachments do |p| %>
+    <%= p.label :photo %>
+    <%= p.file_field :photo, :multiple => true, name: "hotel_attachments[photo][]" %>
+    <% end %>
   <%= f.button :submit %>
 <% end %>

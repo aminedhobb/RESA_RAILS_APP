@@ -7,4 +7,3 @@ class Room < ApplicationRecord
   has_many :room_attachments
   accepts_nested_attributes_for :room_attachments
 end
-end

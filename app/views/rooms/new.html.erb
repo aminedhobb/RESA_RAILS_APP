@@ -1,9 +1,12 @@
-<%= simple_form_for [@hotel, @room], :html => { :multipart => true }) do |f| %>
+<%= simple_form_for [@hotel, @room], :html => { :multipart => true } do |f| %>
   <%= f.input :category %>
   <%= f.input :capacity %>
   <%= f.input :price %>
   <%= f.input :photos %>
-  <%= f.input :photo, :multiple => true, name: "room_attachments[photo][]" %>
+  <%= f.fields_for :room_attachments do |p| %>
+    <%= p.label :photo %>
+    <%= p.file_field :photo, :multiple => true, name: "room_attachments[photo][]" %>
+    <% end %>
   <%= f.button :submit %>
 <% end %>
 

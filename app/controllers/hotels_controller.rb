@@ -30,6 +30,7 @@ class HotelsController < ApplicationController
     if @hotel.save
       params[:hotel_attachments]['photo'].each do |a|
       @hotel_attachment = @hotel.hotel_attachments.create!(:photo => a)
+      end
       redirect_to hotel_path(@hotel)
     else
       render :new

@@ -8,6 +8,5 @@ class Hotel < ApplicationRecord
   has_many :bookings, through: :rooms
   has_many :hotel_attachments
   accepts_nested_attributes_for :hotel_attachments
-end
   belongs_to :user
 end
