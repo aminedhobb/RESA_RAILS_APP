@@ -9,16 +9,21 @@ before_action :set_room only: [:edit, :update, :destroy,]
   end
 
   def show
+    @room_attachments = @room.room_attachments.all
   end
 
   def new
     @room = Room.new
+    @room_attachment = @room.room_attachments.build
   end
 
   def create
     @room = Room.create!(room_params)
     @room.hotel = @hotel
     if @room.save
+      params[:room_attachments]['photo'].each do |a|
+      @room_attachment = @room.room_attachments.create!(:photo => a)
+      end
       link_to hotel_path(@hotel), notice: 'Room was successfully created.'
     else
       render :new
@@ -49,6 +54,6 @@ before_action :set_room only: [:edit, :update, :destroy,]
   end
 
   def room_params
-    params.require(:room).permit(:status, :price, :capacity, :category, :photos)
+    params.require(:room).permit(:status, :price, :capacity, :category, post_attachments_attributes: [:id, :room_id, :photo])
   end
 end

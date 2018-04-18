@@ -7,15 +7,19 @@ class HotelsController < ApplicationController
 
   def show
     @hotel = Hotel.find(params[:id])
+    @hotel_attachments = @hotel.hotel_attachments.all
   end
 
   def new
     @hotel = Hotel.new
+    @hotel_attachment = @hotel.hotel_attachments.build
   end
 
   def create
     @hotel = Hotel.new(hotel_params)
     if @hotel.save
+      params[:hotel_attachments]['photo'].each do |a|
+      @hotel_attachment = @hotel.hotel_attachments.create!(:photo => a)
       redirect_to hotel_path(@hotel)
     else
       render :new
@@ -38,7 +42,7 @@ class HotelsController < ApplicationController
   private
 
   def hotel_params
-    params.require(:hotel).permit(:name, :address, :stars)
+    params.require(:hotel).permit(:name, :address, :stars, hotel_attachments_attributes: [:id, :hotel_id, :photo])
   end
 
   def set_hotel

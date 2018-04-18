@@ -1,0 +1,2 @@
+class HotelAttachmentsController < ApplicationController
+end
