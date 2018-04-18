@@ -5,14 +5,16 @@ before_action :set_hotel, only: [:index, :show, :new, :create]
 before_action :set_room, only: [:edit, :update, :destroy]
 
   def index
-    @rooms = Room.all
+    @rooms = policy_scope(Room)
   end
 
   def show
+    authorize @room
   end
 
   def new
     @room = Room.new
+    authorize @room
   end
 
   def create
@@ -23,19 +25,23 @@ before_action :set_room, only: [:edit, :update, :destroy]
     else
       render :new
     end
+    authorize @room
   end
 
   def edit
+    authorize @room
   end
 
   def update
     @room.hotel.update(room_params)
     redirect_to hotel_path(@hotel), notice: 'Room was successfully upddated.'
+    authorize @room
   end
 
   def destroy
     @room.hotel.destroy
     redirect_to hotel_path(@hotel), notice: 'Room was successfully destroyed.'
+    authorize @room
   end
 
   private

@@ -4,4 +4,5 @@ class Room < ApplicationRecord
   validates :capacity, presence: true
   validates :category, presence: true
   validates :photos, presence: true
+  belongs_to :hotel
 end
