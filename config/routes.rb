@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   resources :hotels do
-    resources :rooms do
-      resources :bookings, only: [:index, :new, :create, :destroy]
-    end
-    resources :reviews
+    resources :rooms, only: [:index, :new, :create]
+    resources :bookings, only: [:index, :new, :create, :show]
+    resources :reviews, only: [:index, :new, :create]
   end
+  resources :rooms, only: [:edit, :update, :destroy]
+  resources :rooms, only: [:edit, :update, :destroy]
+  resources :rooms, only: [:edit, :update, :destroy]
 
   devise_for :users
   root to: 'hotels#index'
