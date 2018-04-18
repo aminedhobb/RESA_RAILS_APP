@@ -4,6 +4,7 @@ class HotelsController < ApplicationController
 
   def index
     @hotels = Hotel.near(params[:city],30)
+    raise
   #  @hotels = policy_scope(Hotel)
   end
 
