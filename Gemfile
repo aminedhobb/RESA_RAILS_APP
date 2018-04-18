@@ -4,7 +4,7 @@ ruby '2.4.3'
 gem 'faker'
 
 #Geolocalisation
-gem "geocoder"
+gem 'geocoder'
 
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
