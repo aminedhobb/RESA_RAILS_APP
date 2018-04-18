@@ -10,6 +10,7 @@ class BookingsController < ApplicationController
   end
 
   def create
+    @room = Room.find_by(category: category_params, status: false)
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.room = @room
@@ -21,19 +22,18 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    @booking = Booking.find(booking_params)
+    @booking = Booking.find(params[:id])
     @booking.destroy
     redirect_to bookings_path
   end
 
   private
 
-  def set_room
-    @room = Room.find(params[:room_id])
-  end
-
   def booking_params
-    params.require(:booking).permit(:arriving_date, :departing_date)
+    params.require(:hotel_id).permit(:arriving_date, :departing_date)
   end
 
+  def category_params
+    params.require(:hotel_id).permit(:category)
+  end
 end
