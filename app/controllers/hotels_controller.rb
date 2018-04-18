@@ -10,10 +10,10 @@ class HotelsController < ApplicationController
     end
   end
 
+
   def show
     @hotel = Hotel.find(params[:id])
 
-   # @bookings = Booking.where("arriving_date >= ? AND departing_date <= ?")
 
     @markers =
       [{
@@ -56,6 +56,11 @@ class HotelsController < ApplicationController
   end
 
   private
+
+  def check_bookings
+    if params[:departing_date]
+     @bookings = Booking.where("arriving_date >= ? AND departing_date <= ?")
+    }
 
   def hotel_params
     params.require(:hotel).permit(:name, :address, :stars)
