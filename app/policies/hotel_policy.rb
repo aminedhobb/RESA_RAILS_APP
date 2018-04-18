@@ -13,7 +13,7 @@ class HotelPolicy < ApplicationPolicy
     user == record.user
   end
 
-  def delete?
+  def destroy?
     user == record.user
   end
 end
