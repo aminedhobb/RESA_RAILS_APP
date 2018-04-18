@@ -18,10 +18,10 @@ before_action :set_room, only: [:edit, :update, :destroy]
   end
 
   def create
-    @room = Room.create!(room_params)
+    @room = Room.new(room_params)
     @room.hotel = @hotel
     if @room.save
-      link_to hotel_path(@hotel), notice: 'Room was successfully created.'
+      redirect_to hotel_path(@hotel), notice: 'Room was successfully created.'
     else
       render :new
     end
