@@ -10,9 +10,9 @@ Hotel.destroy_all
 
 users = [
   {
-  first_name: 'best'
-  last_name: 'batch'
-  email: 'batch118@lewagon.org',
+  first_name: 'best',
+  last_name: 'batch',
+  email: 'batch@lewagon.org',
   password: 'werockguys',
   }
 ]
