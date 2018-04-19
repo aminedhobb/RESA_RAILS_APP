@@ -7,8 +7,8 @@ class BookingsController < ApplicationController
 
   def new
     @rooms = @hotel.rooms
-
     @booking = Booking.new
+    authorize @booking
   end
 
   def create
