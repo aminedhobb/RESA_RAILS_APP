@@ -1,6 +1,5 @@
 .card {
   height: 250px;
-  text-shadow: 0 3px 3px rgba(0,0,0,1);
   background-size: cover !important;
   color: white;
   position: relative;
@@ -16,12 +15,14 @@
 }
 .card-category {
   position: absolute;
+  text-shadow: 0 3px 3px rgba(0,0,0,1);
   top: 10px;
   left: 10px;
   font-size: 20px;
 }
 .card-description {
   position: absolute;
+  text-shadow: 0 3px 3px rgba(0,0,0,1);
   bottom: 10px;
   left: 10px;
 }
