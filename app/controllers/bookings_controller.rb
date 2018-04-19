@@ -39,7 +39,6 @@ class BookingsController < ApplicationController
     @hotel = Hotel.find(params[:hotel_id])
   end
 
-
   def available_rooms
     @hotel = Hotel.find(params[:hotel_id])
     @rooms = hotel.rooms

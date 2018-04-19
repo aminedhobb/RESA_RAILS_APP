@@ -1,11 +1,18 @@
-<%= simple_form_for [@hotel, @room], :html => { :multipart => true } do |f| %>
-  <%= f.input :category %>
-  <%= f.input :capacity %>
-  <%= f.input :price %>
-  <%= f.fields_for :room_attachments do |p| %>
-    <%= p.label :photo %>
-    <%= p.file_field :photo, :multiple => true, name: "room_attachments[photo][]" %>
-    <% end %>
-  <%= f.button :submit %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <h3 class="text-center"> Add a new room to your hotel </h3>
+      <%= simple_form_for [@hotel, @room], :html => { :multipart => true } do |f| %>
+        <%= f.input :category %>
+        <%= f.input :capacity %>
+        <%= f.input :price %>
+        <%= f.fields_for :room_attachments do |p| %>
+          <%= p.label :photo %>
+          <%= p.file_field :photo, :multiple => true, name: "room_attachments[photo][]" %>
+          <% end %>
+        <%= f.button :submit, class: "btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>
 

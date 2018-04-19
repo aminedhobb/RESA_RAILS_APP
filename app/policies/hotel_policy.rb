@@ -1,5 +1,6 @@
 class HotelPolicy < ApplicationPolicy
 
+
   def create?
     true
   end
