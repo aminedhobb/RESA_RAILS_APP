@@ -26,6 +26,7 @@ hotels = [
     name:         'Hotel Movenpick Casablanca',
     stars:      5,
     address:  'Avenue Hassan II, Casablanca',
+
     user_id: 2
   },
   {
@@ -38,18 +39,21 @@ hotels = [
     name:         'Kenzi Basma Hotel',
     stars:      4,
     address:  'Avenue Moulay Hassan 1er, Casablanca 22000',
+
     user_id: 2
   },
   {
     name:         'Hotel Suisse',
     stars:      4,
     address:  'Boulevard De La Corniche, ain diab، Casablanca 20600',
+
     user_id: 2
   },
   {
     name:         'Hotel Novotel Casablanca City Center',
     stars:      4,
     address:  'Angle Zaid Ouhmad, Rue Sidi Belyout, Casablanca 20190',
+
     user_id: 2
   },
   {

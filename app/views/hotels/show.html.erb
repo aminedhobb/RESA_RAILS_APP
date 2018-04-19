@@ -10,8 +10,33 @@
           <% end %>
       <% end %>
       <%= link_to 'Home', hotels_path %>
+      <table>
+        <% @hotel.rooms.each do |room| %>
+        <tr>
+          <td>
+            <%= hotel.room.category %>
+            <%= hotel.room.capacity %>
+          </td>
+          <td>
+            <%= hotel.room.price %>
+          </td>
+          <td>
+            <%= hotel.room.photos %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    <div class="list" >
+      <h3>Hotel dashboard</h3>
+      <%= link_to "Add a room", new_hotel_room_path(@hotel) %>
+      <%= link_to "Edit", edit_room_path(@hotel) %>
+      <%= link_to "Delete", hotel_path(@hotel), method: :delete, data: {confirm: "Are you sure?"} %>
+    </div>
+    <div class="list" >
+      <h3>Customer dashboard</h3>
+      <%= link_to "Book the room", new_hotel_booking_path(@hotel) %>
+  </div>
 
-      <%= render '/rooms/index' %>
       <%= render '/reviews/index' %>
     </div>
   </div>
