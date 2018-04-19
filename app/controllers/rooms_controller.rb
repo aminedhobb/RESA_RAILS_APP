@@ -49,7 +49,7 @@ before_action :set_room, only: [:edit, :update, :destroy]
   end
 
   def destroy
-    @room.hotel.destroy
+    @hotel.room.destroy
     redirect_to hotel_path(@hotel), notice: 'Room was successfully destroyed.'
     authorize @room
   end

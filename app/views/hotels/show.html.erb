@@ -17,18 +17,35 @@
         <% @hotel.rooms.each do |room| %>
         <tr>
           <td>
-            <%= hotel.room.category %>
-            <%= hotel.room.capacity %>
+            <%= room.category %>
+            <%= room.capacity %>
           </td>
           <td>
-            <%= hotel.room.price %>
+            <%= room.price %>
           </td>
           <td>
-            <%= hotel.room.photos %>
+            <% room.room_attachments.each do |p| %>
+              <%= image_tag p.photo_url %>
+              <%= link_to "Edit Attachment", edit_room_attachment_path(p) %>
+            <% if policy(p).destroy? %>
+        <%= link_to "delete Attachment", room_attachment_path(p),method: :delete, data: {confirm: "Are you sure?"} %>
+          <% end %>
+          <% end %>
+          </td>
+          <td>
+            <%if policy(room).edit? %>
+              <%= link_to "Edit", edit_room_path(room) %>
+            <% end %>
+          </td>
+          <%if policy(room).destroy? %>
+              <%= link_to "Delete", room_path(room), method: :delete, data: { confirm: "Are you sure?" } %>
+            <% end %>
+        </tr>
           </td>
         </tr>
         <% end %>
       </table>
+
     <div class="list" >
       <% if policy(@hotel).update? %>
         <h3>Hotel dashboard</h3>
