@@ -6,7 +6,7 @@ class Hotel < ApplicationRecord
   has_many :rooms, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :bookings, through: :rooms
-  has_many :hotel_attachments
+  has_many :hotel_attachments, dependent: :destroy
   accepts_nested_attributes_for :hotel_attachments
   belongs_to :user
 end

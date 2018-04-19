@@ -12,18 +12,22 @@
             <% room.room_attachments.each do |p| %>
               <%= image_tag p.photo_url %>
               <%= link_to "Edit Attachment", edit_room_attachment_path(p) %>
-            <% end %>
+            <% if policy(p).destroy? %>
+        <%= link_to "delete Attachment", room_attachment_path(p),method: :delete, data: {confirm: "Are you sure?"} %>
+          <% end %>
+          <% end %>
           </td>
           <td>
             <%if policy(room).edit? %>
-              <%= link_to "Edit", edit_room_path(@hotel) %>
+              <%= link_to "Edit", edit_room_path(room) %>
             <% end %>
           </td>
           <%if policy(room).destroy? %>
-              <%= link_to "Delete", hotel_path(@hotel), method: :delete, data: { confirm: "Are you sure?" } %>
+              <%= link_to "Delete", room_path(room), method: :delete, data: { confirm: "Are you sure?" } %>
             <% end %>
         </tr>
         <% end %>
+
       </table>
     <div class="list" >
       <h3>Hotel dashboard</h3>
@@ -31,5 +35,4 @@
     </div>
     <div class="list" >
       <h3>Customer dashboard</h3>
-      <%= link_to "Book the room", "#" %>
   </div>

@@ -13,7 +13,9 @@ class RoomAttachmentsController < ApplicationController
    end
 
   def destroy
+    @hotel = @room_attachment.room.hotel
     @room_attachment.destroy
+    @room = @room_attachment.room
     redirect_to hotel_path(@hotel)
     authorize @room_attachment
   end
