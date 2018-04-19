@@ -8,6 +8,9 @@
         <% if policy(p).edit? %>
           <%= link_to "Edit Attachment", edit_hotel_attachment_path(p) %>
           <% end %>
+        <% if policy(p).destroy? %>
+        <%= link_to "delete Attachment", hotel_attachment_path(p),method: :delete, data: {confirm: "Are you sure?"} %>
+          <% end %>
       <% end %>
       <%= link_to 'Home', hotels_path %>
       <table>

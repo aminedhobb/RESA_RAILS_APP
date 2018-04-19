@@ -1,5 +1,5 @@
 class RoomAttachmentsController < ApplicationController
-  before_action :set_room_attach, only: [:edit,:update,:destroy]
+  before_action :set_room_attachment, only: [:edit,:update,:destroy]
   skip_after_action :verify_authorized
 
   def edit
@@ -13,7 +13,9 @@ class RoomAttachmentsController < ApplicationController
    end
 
   def destroy
+    @hotel = @room_attachment.room.hotel
     @room_attachment.destroy
+    @room = @room_attachment.room
     redirect_to hotel_path(@hotel)
     authorize @room_attachment
   end
@@ -24,7 +26,7 @@ class RoomAttachmentsController < ApplicationController
     params.require(:room_attachment).permit(:room_id, :photo)
   end
 
-  def set_hotel_attach
+  def set_room_attachment
     @room_attachment = RoomAttachment.find(params[:id])
 
   end

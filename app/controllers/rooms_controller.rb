@@ -24,13 +24,16 @@ before_action :set_room, only: [:edit, :update, :destroy]
     @room = Room.new(room_params)
     @room.hotel = @hotel
     if @room.save
+      if params[:room_attachments] != nil
       params[:room_attachments]['photo'].each do |a|
         @room_attachment = @room.room_attachments.create!(:photo => a)
       end
       redirect_to hotel_path(@hotel)
     else
+      redirect_to hotel_path(@hotel)
+    end
+    else
       render :new
-      raise
     end
     authorize @room
   end
@@ -40,7 +43,7 @@ before_action :set_room, only: [:edit, :update, :destroy]
   end
 
   def update
-    @room.hotel.update(room_params)
+    @hotel.room.update(room_params)
     redirect_to hotel_path(@hotel), notice: 'Room was successfully updated.'
     authorize @room
   end
@@ -58,10 +61,10 @@ before_action :set_room, only: [:edit, :update, :destroy]
   end
 
   def set_room
-    @room = Room.find(params[:room_id])
+    @room = Room.find(params[:id])
   end
 
   def room_params
-    params.require(:room).permit(:price, :capacity, :category, post_attachments_attributes: [:id, :room_id, :photo])
+    params.require(:room).permit(:price, :capacity, :category, room_attachments_attributes: [:id, :room_id, :photo])
   end
 end
