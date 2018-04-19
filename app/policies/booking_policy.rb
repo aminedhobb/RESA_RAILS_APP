@@ -1,5 +1,4 @@
-class HotelPolicy < ApplicationPolicy
-
+class BookingPolicy < ApplicationPolicy
   def create?
     true
   end

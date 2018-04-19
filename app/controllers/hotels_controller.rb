@@ -8,14 +8,17 @@ class HotelsController < ApplicationController
       else
         @hotels = Hotel.all
     end
+
+    # if params[:departing_date].present?
+    #   query = "SELECT * FROM bookings WHERE arriving_date >= :arriving_date AND departing_date <= :departing_date"
   end
+
 
   def show
     @hotel = Hotel.find(params[:id])
     @hotel_attachments = @hotel.hotel_attachments.all
 
 
-   # @bookings = Booking.where("arriving_date >= ? AND departing_date <= ?")
 
     @markers =
       [{
@@ -37,7 +40,7 @@ class HotelsController < ApplicationController
     @hotel.user = current_user
     if @hotel.save
       params[:hotel_attachments]['photo'].each do |a|
-      @hotel_attachment = @hotel.hotel_attachments.create!(:photo => a)
+        @hotel_attachment = @hotel.hotel_attachments.create!(:photo => a)
       end
       redirect_to hotel_path(@hotel)
     else
@@ -59,9 +62,11 @@ class HotelsController < ApplicationController
   def destroy
     @hotel.destroy
     redirect_to hotels_path
+    authorize @hotel
   end
 
   private
+
 
   def hotel_params
     params.require(:hotel).permit(:name, :address, :stars, hotel_attachments_attributes: [:id, :hotel_id, :photo])

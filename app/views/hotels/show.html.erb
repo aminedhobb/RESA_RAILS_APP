@@ -5,10 +5,38 @@
       <%= @hotel.address %>
       <% @hotel_attachments.each do |p| %>
         <%= image_tag p.photo_url %>
-        <%= link_to "Edit Attachment", edit_hotel_attachment_path(p) %>
+        <% if policy(p).edit? %>
+          <%= link_to "Edit Attachment", edit_hotel_attachment_path(p) %>
+          <% end %>
       <% end %>
       <%= link_to 'Home', hotels_path %>
-      <%= render '/rooms/index' %>
+      <table>
+        <% @hotel.rooms.each do |room| %>
+        <tr>
+          <td>
+            <%= hotel.room.category %>
+            <%= hotel.room.capacity %>
+          </td>
+          <td>
+            <%= hotel.room.price %>
+          </td>
+          <td>
+            <%= hotel.room.photos %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    <div class="list" >
+      <h3>Hotel dashboard</h3>
+      <%= link_to "Add a room", new_hotel_room_path(@hotel) %>
+      <%= link_to "Edit", edit_room_path(@hotel) %>
+      <%= link_to "Delete", hotel_path(@hotel), method: :delete, data: {confirm: "Are you sure?"} %>
+    </div>
+    <div class="list" >
+      <h3>Customer dashboard</h3>
+      <%= link_to "Book the room", new_hotel_booking_path(@hotel) %>
+  </div>
+
       <%= render '/reviews/index' %>
     </div>
   </div>
