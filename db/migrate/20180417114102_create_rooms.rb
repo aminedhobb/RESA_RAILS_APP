@@ -1,7 +1,7 @@
 class CreateRooms < ActiveRecord::Migration[5.1]
   def change
     create_table :rooms do |t|
-      t.boolean :status
+      t.boolean :status, default: false
       t.integer :price
       t.integer :capacity
       t.text :category

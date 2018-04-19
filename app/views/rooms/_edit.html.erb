@@ -1,4 +1,4 @@
-<%= simple_form_for @room.hotel do |f| %>
+<%= simple_form_for [@hotel, @room] do |f| %>
   <%= f.input :category %>
   <%= f.input :capacity %>
   <%= f.input :price %>
