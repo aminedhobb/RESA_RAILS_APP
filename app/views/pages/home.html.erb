@@ -3,12 +3,70 @@
     <h1>RESA</h1>
     <p>Unique places, Minimum prices.</p>
     <%= form_tag hotels_path, class: 'form-inline', method: :get do %>
-      <%= label_tag(:city, "Where") %>
       <%= text_field_tag :city, params[:city], class: "form-control", placeholder: "Find a city", id: "flat_address"%>
       <%= date_field(:departing_date, params[:departing_date], value: Date.today, class: "form-control") %>
       <%= date_field(:arriving_date, params[:arriving_date], value: Date.today+1,class: "form-control") %>
 
       <%= submit_tag("Search", class: "btn btn-success") %>
     <% end %>
+  </div>
+</div>
+<div class="wrapper-grey padded">
+  <div class="container">
+  </br>
+    <h2 class="text-center">Your next trip</h2>
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background: url(http://tourismeetgastronomie.ma/wp-content/uploads/2017/04/06801Z.jpg)">
+          <div class="card-category">-15%</div>
+          <div class="card-description">
+            <h3>Marrakech</h3>
+            <h2>Charming room with view on the medina.</h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background: url(http://travelnkite.com/wp-content/uploads/2017/07/travel_kite_dakhla_surf-1024x682.jpg);">
+          <div class="card-category">-10%</div>
+          <div class="card-description">
+            <h3>Dakhla</h3>
+            <h2>Meet desert and sea.</h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background: url(http://energienvironnement.com/ee_wp/wp-content/uploads/2018/02/fotolia_124922363_subscription_monthly_m_0.jpg)">
+          <div class="card-category">-20%</div>
+          <div class="card-description">
+            <h3>Fes</h3>
+            <h2>Discover the oldest tanneries in the world.</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container text-center padded features">
+</br>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <img src="http://lewagon.github.io/bootstrap-challenges/09-Final-airbnb-home/images/globe.png" alt="">
+      <h2>Discover the world</h2>
+      <p>The earth is your home.</p>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <img src="http://lewagon.github.io/bootstrap-challenges/09-Final-airbnb-home/images/dollar.png" alt="">
+      <h2>Best deals</h2>
+      <p>Money is not an issue anymore.</p>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <img src="http://lewagon.github.io/bootstrap-challenges/09-Final-airbnb-home/images/beer.png" alt="">
+      <h2>Meet people</h2>
+      <p>Discover new cultures.</p>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+
+    </div>
   </div>
 </div>

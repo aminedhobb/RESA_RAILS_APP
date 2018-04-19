@@ -8,7 +8,7 @@
 
 puts 'Cleaning database...'
 Hotel.destroy_all
-
+User.destroy_all
 users = [
   {
     first_name:'Jabba',
