@@ -1,12 +1,7 @@
 class HotelPolicy < ApplicationPolicy
-  class Scope < Scope
-    def resolve
-      scope.all
-    end
-  end
 
   def create?
-    user == record.user
+    true
   end
 
   def update?
