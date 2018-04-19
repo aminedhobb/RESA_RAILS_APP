@@ -7,10 +7,12 @@ class ReviewsController < ApplicationController
   end
 
   def show
+    authorize @review
   end
 
   def new
     @review = Review.new
+    authorize @review
   end
 
   def create
@@ -21,19 +23,23 @@ class ReviewsController < ApplicationController
     else
       render 'new'
     end
+    authorize @review
   end
 
   def edit
+    authorize @review
   end
 
   def update
     @review.update(review_params)
     redirect_to hotel_path(@hotel)
+    authorize @review
   end
 
   def destroy
     @review.destroy
     redirect_to hotel_path
+    authorize @review
   end
 
   private

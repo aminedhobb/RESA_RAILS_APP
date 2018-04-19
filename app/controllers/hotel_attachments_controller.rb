@@ -3,16 +3,19 @@ class HotelAttachmentsController < ApplicationController
   skip_after_action :verify_authorized
 
   def edit
+    authorize @hotel_attachment
   end
 
   def update
     @hotel_attachment.update(hotel_params)
     redirect_to @hotel_attachment.hotel
+    authorize @hotel_attachment
    end
 
   def destroy
     @hotel_attachment.destroy
     redirect_to hotel_path(@hotel)
+    authorize @hotel_attachment
   end
 
   private
@@ -23,6 +26,5 @@ class HotelAttachmentsController < ApplicationController
 
   def set_hotel_attach
     @hotel_attachment = HotelAttachment.find(params[:id])
-
   end
 end
