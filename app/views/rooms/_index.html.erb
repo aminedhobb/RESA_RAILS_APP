@@ -10,7 +10,7 @@
           </td>
           <td>
             <% room.room_attachments.each do |p| %>
-              <%= image_tag p.avatar_url %>
+              <%= image_tag p.photo_url %>
               <%= link_to "Edit Attachment", edit_room_attachment_path(p) %>
             <% end %>
           </td>
