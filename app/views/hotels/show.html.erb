@@ -13,22 +13,23 @@
           <% end %>
       <% end %>
       <%= link_to 'Home', hotels_path %>
-      <table>
-        <% @hotel.rooms.each do |room| %>
-        <tr>
-          <td>
-            <%= hotel.room.category %>
-            <%= hotel.room.capacity %>
-          </td>
-          <td>
-            <%= hotel.room.price %>
-          </td>
-          <td>
-            <%= hotel.room.photos %>
-          </td>
-        </tr>
-        <% end %>
-      </table>
+      <div class="room-container">
+        <table>
+          <% @hotel.rooms.each do |room| %>
+          <tr>
+            <td>
+              <%= room.category %>
+            </td>
+            <td>
+              <%= room.capacity %> personnes
+            </td>
+            <td>
+              <%= room.price %> DHS
+            </td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
     <div class="list" >
       <% if policy(@hotel).update? %>
         <h3>Hotel dashboard</h3>
