@@ -5,7 +5,9 @@
       <%= @hotel.address %>
       <% @hotel_attachments.each do |p| %>
         <%= image_tag p.photo_url %>
-        <%= link_to "Edit Attachment", edit_hotel_attachment_path(p) %>
+        <% if policy(p).edit? %>
+          <%= link_to "Edit Attachment", edit_hotel_attachment_path(p) %>
+          <% end %>
       <% end %>
       <%= link_to 'Home', hotels_path %>
       <table>

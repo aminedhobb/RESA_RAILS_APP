@@ -1,4 +1,4 @@
-class RoomPolicy < ApplicationPolicy
+class HotelAttachmentPolicy < ApplicationPolicy
 
   def create?
     user == record.hotel.user

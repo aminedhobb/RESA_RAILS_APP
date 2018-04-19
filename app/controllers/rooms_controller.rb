@@ -23,7 +23,6 @@ skip_after_action :verify_authorized
   def create
     @room = Room.new(room_params)
     @room.hotel = @hotel
-
     if @room.save
       params[:room_attachments]['photo'].each do |a|
         @room_attachment = @room.room_attachments.create!(:photo => a)
