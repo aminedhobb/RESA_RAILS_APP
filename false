@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20180419131954_add_booked_to_room.rb

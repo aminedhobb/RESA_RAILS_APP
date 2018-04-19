@@ -30,6 +30,7 @@ skip_after_action :verify_authorized
       redirect_to hotel_path(@hotel)
     else
       render :new
+      raise
     end
     authorize @room
   end
