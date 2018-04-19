@@ -3,16 +3,19 @@ class RoomAttachmentsController < ApplicationController
   skip_after_action :verify_authorized
 
   def edit
+    authorize @room_attachment
   end
 
   def update
     @room_attachment.update(room_params)
     redirect_to @room_attachment.hotel
+    authorize @room_attachment
    end
 
   def destroy
     @room_attachment.destroy
     redirect_to hotel_path(@hotel)
+    authorize @room_attachment
   end
 
   private

@@ -37,7 +37,7 @@ class HotelsController < ApplicationController
     @hotel.user = current_user
     if @hotel.save
       params[:hotel_attachments]['photo'].each do |a|
-      @hotel_attachment = @hotel.hotel_attachments.create!(:photo => a)
+        @hotel_attachment = @hotel.hotel_attachments.create!(:photo => a)
       end
       redirect_to hotel_path(@hotel)
     else
@@ -59,6 +59,7 @@ class HotelsController < ApplicationController
   def destroy
     @hotel.destroy
     redirect_to hotels_path
+    authorize @hotel
   end
 
   private
