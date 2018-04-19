@@ -5,7 +5,7 @@ class RoomAttachmentPolicy < ApplicationPolicy
   end
 
   def update?
-    user == record.room.hotel.user
+    true
   end
 
   def destroy?
