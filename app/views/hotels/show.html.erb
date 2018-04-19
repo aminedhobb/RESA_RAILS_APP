@@ -30,13 +30,15 @@
         <% end %>
       </table>
     <div class="list" >
-      <h3>Hotel dashboard</h3>
-      <%= link_to "Add a room", new_hotel_room_path(@hotel) %>
-      <%= link_to "Edit", edit_room_path(@hotel) %>
-      <%= link_to "Delete", hotel_path(@hotel), method: :delete, data: {confirm: "Are you sure?"} %>
+      <% if policy(@hotel).update? %>
+        <h3>Hotel dashboard</h3>
+        <%= link_to "Add a room", new_hotel_room_path(@hotel) %>
+        <%= link_to "Edit", edit_room_path(@hotel) %>
+        <%= link_to "Delete", hotel_path(@hotel), method: :delete, data: {confirm: "Are you sure?"} %>
+      <% end %>
     </div>
     <div class="list" >
-      <h3>Customer dashboard</h3>
+      <h3>Stay in this hotel</h3>
       <%= link_to "Book the room", new_hotel_booking_path(@hotel) %>
   </div>
 

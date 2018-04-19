@@ -1,7 +1,7 @@
 class RoomPolicy < ApplicationPolicy
 
   def create?
-    true
+    user == record.hotel.user
   end
 
   def update?
