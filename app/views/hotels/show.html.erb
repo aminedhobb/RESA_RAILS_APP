@@ -13,23 +13,6 @@
           <% end %>
       <% end %>
       <%= link_to 'Home', hotels_path %>
-      <div class="room-container">
-        <table>
-          <% @hotel.rooms.each do |room| %>
-          <tr>
-            <td>
-              <%= room.category %>
-            </td>
-            <td>
-              <%= room.capacity %> personnes
-            </td>
-            <td>
-              <%= room.price %> DHS
-            </td>
-          </tr>
-          <% end %>
-        </table>
-      </div>
     <div class="list" >
       <% if policy(@hotel).update? %>
         <h3>Hotel dashboard</h3>
@@ -42,11 +25,9 @@
       <h3>Stay in this hotel</h3>
       <%= link_to "Book the room", new_hotel_booking_path(@hotel) %>
   </div>
-
+      <%= render '/rooms/index' %>
       <%= render '/reviews/index' %>
     </div>
   </div>
   <div id="map" style="width: 25%" data-markers="<%= @markers.to_json %>"></div>
 </div>
-
-

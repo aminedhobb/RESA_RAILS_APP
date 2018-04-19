@@ -3,6 +3,7 @@ class RoomsController < ApplicationController
 skip_before_action :authenticate_user!, only: [:show]
 before_action :set_hotel, only: [:index, :new, :create]
 before_action :set_room, only: [:edit, :update, :destroy]
+skip_after_action :verify_authorized
 
   def index
     @rooms = Room.where(hotel: @hotel)
@@ -15,7 +16,6 @@ before_action :set_room, only: [:edit, :update, :destroy]
 
   def new
     @room = Room.new
-    @room.hotel = @hotel
     @room_attachment = @room.room_attachments.build
     authorize @room
   end
