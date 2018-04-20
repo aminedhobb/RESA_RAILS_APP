@@ -56,14 +56,18 @@
   padding: 30px;
   height: 250px;
   background: white;
+  border-radius: 5px;
   h2 {
     color: #004080;
+    font-weight: 400;
   }
   h3 {
-    color: green;
-    font-size: 15px;
+    color: #4d0099;
+    font-size: 20px;
+    font-weight: lighter;
   }
 }
 .card-hotel:hover {
-  border: 3px solid #004080;
+  border: 2px solid #004080;
 }
+
