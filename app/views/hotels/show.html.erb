@@ -23,9 +23,11 @@
     <div class="list" >
       <h3>Stay in this hotel</h3>
       <%= link_to "Book the room", new_hotel_booking_path(@hotel) %>
-  </div>
-      <%= render '/reviews/index' %>
     </div>
+        <%= render '/reviews/index' %>
+    </div>
+    <div id="map" style="width: 25%" data-markers="<%= @markers.to_json %>"></div>
+ </div>
   </div>
 </div>
 
