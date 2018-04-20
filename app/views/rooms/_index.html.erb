@@ -11,10 +11,10 @@
               <% end %>
             <% end %>
             <%if policy(room).edit? %>
-              <%= link_to "Edit", edit_room_path(room) %>
+              <%= link_to "Edit room", edit_room_path(room) %>
             <% end %>
             <%if policy(room).destroy? %>
-              <%= link_to "Delete", room_path(room), method: :delete, data: { confirm: "Are you sure?" } %>
+              <%= link_to "Delete room", room_path(room), method: :delete, data: { confirm: "Are you sure?" } %>
             <% end %>
         <% end %>
 
