@@ -1,4 +1,4 @@
-<div class="navbar-wagon">
+<div class="navbar-wagon navbar-fixed-top navbar-wagon-white ">
   <!-- Logo -->
   <%= link_to image_tag("logo.png", class: "logo"), root_path%>
   <!-- Right Navigation -->
@@ -8,14 +8,14 @@
 
       <!-- Links when logged in -->
       <%= link_to "Add a hotel", new_hotel_path, class: "btn btn-outline-primary" %>
-      <%= link_to "Bookings", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Bookings", bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Profile", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
 
-          <%= image_tag "unknown-picture.jpg", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <%= image_tag "Jabba_le_Hutt.png", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
 
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
