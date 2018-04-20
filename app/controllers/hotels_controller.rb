@@ -14,7 +14,6 @@ class HotelsController < ApplicationController
     @hotel = Hotel.find(params[:id])
     @hotel_attachments = @hotel.hotel_attachments.all
 
-
    # @bookings = Booking.where("arriving_date >= ? AND departing_date <= ?")
 
     @markers =
