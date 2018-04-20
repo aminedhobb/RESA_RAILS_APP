@@ -6,6 +6,7 @@ before_action :set_room, only: [:edit, :update, :destroy]
 skip_after_action :verify_authorized
 
   def index
+    @hotel = @room.hotel
     @rooms = Room.where(hotel: @hotel)
   end
 
@@ -44,7 +45,6 @@ skip_after_action :verify_authorized
 
   def update
     @hotel =  @room.hotel
-    @hotel = room.hotel
     @room.update(room_params)
     redirect_to hotel_path(@hotel), notice: 'Room was successfully updated.'
     authorize @room
@@ -52,7 +52,7 @@ skip_after_action :verify_authorized
 
   def destroy
     @hotel =  @room.hotel
-    @room.hotel.destroy
+    @room.destroy
     redirect_to hotel_path(@hotel), notice: 'Room was successfully destroyed.'
     authorize @room
   end
