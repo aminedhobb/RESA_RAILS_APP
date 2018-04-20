@@ -15,7 +15,8 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     if @booking.save
-      redirect_to hotel_path(@hotel)
+      flash[:notice] = "Your booking is confirmed!"
+      redirect_to root_path
     else
       render :new
     end
