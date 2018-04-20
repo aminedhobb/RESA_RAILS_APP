@@ -45,7 +45,7 @@
   opacity: 0.9;
 }
 .card-photo {
-  height: 200px;
+  height: 230px;
   width:100%;
   background-size: cover;
   border-radius: 3px;
@@ -53,7 +53,7 @@
 .card-hotel{
   border: 1px solid rgba(0,0,0,0.4);
   margin-bottom: 20px;
-  padding: 30px;
+  padding: 10px;
   height: 250px;
   background: white;
   border-radius: 5px;
@@ -69,5 +69,8 @@
 }
 .card-hotel:hover {
   border: 2px solid #004080;
+}
+.card-body {
+  margin: 20px;
 }
 
