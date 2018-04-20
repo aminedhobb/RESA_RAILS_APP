@@ -27,3 +27,11 @@
   background-image: url(http://www.bivouacsouslesetoiles.org/fichiers_site/a5833has/produits/Think-Morocco-Marrakech-KoutoubiaMosque-508212800-mmeee-copy.jpg);
   transition: all 1s ease;
 }
+.item {
+  height: 400px;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-position: center;
+}

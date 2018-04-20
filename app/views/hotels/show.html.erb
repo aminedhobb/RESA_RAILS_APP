@@ -1,34 +1,27 @@
 <div class="main-container">
   <div class="container">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-       <%= link_to 'Home', hotels_path %>
-      <h3>Hotel dashboard</h3>
-       <p><%= link_to "Edit hotel", edit_hotel_path(@hotel) %></p>
-        <p><%= link_to "Delete hotel", hotel_path(@hotel), method: :delete, data: {confirm: "Are you sure?"} %></p>
-        <p><%= link_to "Add a room", new_hotel_room_path(@hotel) %></p>
-      <%= @hotel.name %><br>
-      <%= @hotel.address %><br>
-      <% @hotel_attachments.each do |p| %>
-        <%= image_tag p.photo_url %>
-        <% if policy(p).edit? %>
-          <%= link_to "Edit Attachment", edit_hotel_attachment_path(p) %>
-          <% end %>
-        <% if policy(p).destroy? %>
-          <%= link_to "delete Attachment", hotel_attachment_path(p),method: :delete, data: {confirm: "Are you sure?"} %>
-          <% end %>
-      <% end %>
-      <br>
-      <br>
-      <%= render '/rooms/index' %>
-      <div class="list" >
-        <h3>Stay in this hotel</h3>
-        <%= link_to "Book the room", new_hotel_booking_path(@hotel) %>
+      <h3><%= @hotel.name %></h3>
+        <%= @hotel.address %><br>
+        <%= link_to "Edit", edit_hotel_path(@hotel) %>
+        <%= link_to "Delete", hotel_path(@hotel), method: :delete, data: {confirm: "Are you sure?"} %>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+      <%= render 'carousel' %>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div id="map" style="width: 100%; position: relative; overflow: hidden;" data-markers="<%= @markers.to_json %>">
+          </div>
+        </div>
       </div>
+      <br>
+      <%= link_to "Add a room", new_hotel_room_path(@hotel) %>
+      <%= render '/rooms/index' %>
+      <br>
+    <div class="list" >
+      <%= link_to "Book this hotel", new_hotel_booking_path(@hotel), class: "btn btn-success" %>
+    </div>
       <%= render '/reviews/index' %>
       </div>
     </div>
-
-  <div id="map" style="width: 25%; position: relative; overflow: hidden;" data-markers="<%= @markers.to_json %>">
-      </div>
   </div>
 </div>
