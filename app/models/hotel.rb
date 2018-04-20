@@ -9,5 +9,4 @@ class Hotel < ApplicationRecord
   has_many :hotel_attachments, dependent: :destroy
   accepts_nested_attributes_for :hotel_attachments
   belongs_to :user
-
 end

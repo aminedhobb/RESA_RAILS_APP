@@ -1,7 +1,4 @@
 <h1 class="text-center">Hotels</h1>
-
-
-
 <div class="container">
   <div class="row">
     <% @hotels.each do |hotel| %>
@@ -9,12 +6,6 @@
       <div class="card text-center">
         <div class="card-body">
           <%= link_to hotel.name, hotel_path(hotel) %>
-          <% if policy(hotel).edit? %>
-            <%= link_to "Edit", edit_hotel_path(hotel) %>
-            <% end %>
-            <% if policy(hotel).destroy? %>
-            <%= link_to "Delete", hotel_path(hotel), method: :delete, data: {confirm: "Are you sure?"} %>
-            <% end %>
         </div>
       </div>
     </div>
