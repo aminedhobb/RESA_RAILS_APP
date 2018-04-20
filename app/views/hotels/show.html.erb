@@ -1,9 +1,12 @@
 <div class="main-container">
   <div class="container">
       <h3><%= @hotel.name %></h3>
+        <%= @hotel.address %><br>
         <%= link_to "Edit", edit_hotel_path(@hotel) %>
         <%= link_to "Delete", hotel_path(@hotel), method: :delete, data: {confirm: "Are you sure?"} %>
-      <%= @hotel.address %><br>
+        <p><%= link_to "Add a room", new_hotel_room_path(@hotel) %></p>
+       <p><%= link_to "Edit", edit_hotel_path(@hotel) %></p>
+        <p><%= link_to "Delete", hotel_path(@hotel), method: :delete, data: {confirm: "Are you sure?"} %></p>
       <%= render 'carousel' %>
       <br>
       <br>
@@ -13,7 +16,6 @@
       <%= link_to "Book this hotel", new_hotel_booking_path(@hotel), class: "btn btn-success" %>
     </div>
       <%= render '/reviews/index' %>
-  </div>
 </div>
 
 
