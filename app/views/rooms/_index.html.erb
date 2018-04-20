@@ -1,8 +1,16 @@
-
+<table style="width: 100%">
+  <tr>
+    <th>Category</th>
+    <th>Capacity</th>
+    <th>Price</th>
+  </tr>
+  <tr>
         <% @hotel.rooms.each do |room| %>
-            <%= room.category %>
-            <%= room.capacity %>
-            <%= room.price %>
+           <td><%= room.category %></td>
+           <td><%= room.capacity %></td>
+           <td><%= room.price %>DH</td>
+  </tr>
+</table>
             <% room.room_attachments.each do |p| %>
               <%= image_tag p.photo_url %>
               <%= link_to "Edit Attachment", edit_room_attachment_path(p) %>
