@@ -8,17 +8,14 @@ class HotelsController < ApplicationController
       else
         @hotels = Hotel.all
     end
-
-    # if params[:departing_date].present?
-    #   query = "SELECT * FROM bookings WHERE arriving_date >= :arriving_date AND departing_date <= :departing_date"
   end
-
 
   def show
     @hotel = Hotel.find(params[:id])
     @hotel_attachments = @hotel.hotel_attachments.all
 
 
+   # @bookings = Booking.where("arriving_date >= ? AND departing_date <= ?")
 
     @markers =
       [{
@@ -70,7 +67,6 @@ class HotelsController < ApplicationController
   end
 
   private
-
 
   def hotel_params
     params.require(:hotel).permit(:name, :address, :stars, hotel_attachments_attributes: [:id, :hotel_id, :photo])

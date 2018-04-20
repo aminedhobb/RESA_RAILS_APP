@@ -1,14 +1,14 @@
 class RoomPolicy < ApplicationPolicy
 
   def create?
-    user == record.hotel.user
+    true
   end
 
   def update?
-    user == record.hotel.user
+    true
   end
 
   def destroy?
-    user == record.hotel.user
+    true
   end
 end

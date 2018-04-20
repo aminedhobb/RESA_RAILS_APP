@@ -6,10 +6,10 @@ class HotelPolicy < ApplicationPolicy
   end
 
   def update?
-    user == record.user
+    true
   end
 
   def destroy?
-    user == record.user
+    true
   end
 end
