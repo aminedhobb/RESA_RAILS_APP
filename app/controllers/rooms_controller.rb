@@ -43,14 +43,14 @@ skip_after_action :verify_authorized
   end
 
   def update
-    @hotel =  room.hotel
+    @hotel =  @room.hotel
     @room.update(room_params)
     redirect_to hotel_path(@hotel), notice: 'Room was successfully updated.'
     authorize @room
   end
 
   def destroy
-    @hotel =  room.hotel
+    @hotel =  @room.hotel
     @room.hotel.destroy
     redirect_to hotel_path(@hotel), notice: 'Room was successfully destroyed.'
     authorize @room
