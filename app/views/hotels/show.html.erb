@@ -1,10 +1,11 @@
 <div class="main-container">
   <div class="container">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+       <%= link_to 'Home', hotels_path %>
       <h3>Hotel dashboard</h3>
+       <p><%= link_to "Edit hotel", edit_hotel_path(@hotel) %></p>
+        <p><%= link_to "Delete hotel", hotel_path(@hotel), method: :delete, data: {confirm: "Are you sure?"} %></p>
         <p><%= link_to "Add a room", new_hotel_room_path(@hotel) %></p>
-       <p><%= link_to "Edit", edit_hotel_path(@hotel) %></p>
-        <p><%= link_to "Delete", hotel_path(@hotel), method: :delete, data: {confirm: "Are you sure?"} %></p>
       <%= @hotel.name %><br>
       <%= @hotel.address %><br>
       <% @hotel_attachments.each do |p| %>
@@ -19,7 +20,6 @@
       <br>
       <br>
       <%= render '/rooms/index' %>
-      <%= link_to 'Home', hotels_path %>
       <div class="list" >
         <h3>Stay in this hotel</h3>
         <%= link_to "Book the room", new_hotel_booking_path(@hotel) %>
@@ -27,7 +27,8 @@
       <%= render '/reviews/index' %>
       </div>
     </div>
-  </div>
+
   <div id="map" style="width: 25%; position: relative; overflow: hidden;" data-markers="<%= @markers.to_json %>">
+      </div>
   </div>
 </div>
