@@ -18,8 +18,8 @@
       <br>
       <% if policy(@hotel).update? %>
       <%= link_to "Add a room", new_hotel_room_path(@hotel) %>
-      <%= render '/rooms/index' %>
       <% end %>
+      <%= render '/rooms/index' %>
       <br>
     <div class="list" >
       <%= link_to "Book this hotel", new_hotel_booking_path(@hotel), class: "btn btn-success" %>
