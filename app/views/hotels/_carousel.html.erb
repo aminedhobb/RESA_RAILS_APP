@@ -1,10 +1,10 @@
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
-    <div class="item active">
+    <div class="item active" style="height: 400px">
       <%= image_tag(@hotel_attachments.first.photo_url) %>
     </div>
-    <% @hotel_attachments.each do |p| %>
-    <div class="item">
+    <% @hotel_attachments.drop(1).each do |p| %>
+    <div class="item" style="height: 400px">
       <%= image_tag(p.photo_url) %>
     </div>
     <% end %>

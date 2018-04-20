@@ -7,7 +7,11 @@
         <p><%= link_to "Add a room", new_hotel_room_path(@hotel) %></p>
        <p><%= link_to "Edit", edit_hotel_path(@hotel) %></p>
         <p><%= link_to "Delete", hotel_path(@hotel), method: :delete, data: {confirm: "Are you sure?"} %></p>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
       <%= render 'carousel' %>
+        </div>
+      </div>
       <br>
       <br>
       <%= render '/rooms/index' %>
