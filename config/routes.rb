@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   resources :hotels do
     resources :rooms, only: [:new, :create]
-    resources :bookings, only: [:index, :new, :create, :show]
+    resources :bookings, only: [:new, :create, :show]
     resources :reviews, only: [:index, :new, :create]
   end
   resources :rooms, only: [:edit, :update, :destroy]
-  resources :bookings, only: [:edit, :update, :destroy]
+  resources :bookings, only: [:index, :edit, :update, :destroy]
   resources :reviews, only: [:edit, :update, :destroy]
 
   resources :hotel_attachments, only: [:edit, :update, :destroy]
