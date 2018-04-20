@@ -4,30 +4,24 @@
         <%= @hotel.address %><br>
         <%= link_to "Edit", edit_hotel_path(@hotel) %>
         <%= link_to "Delete", hotel_path(@hotel), method: :delete, data: {confirm: "Are you sure?"} %>
-        <p><%= link_to "Add a room", new_hotel_room_path(@hotel) %></p>
-       <p><%= link_to "Edit", edit_hotel_path(@hotel) %></p>
-        <p><%= link_to "Delete", hotel_path(@hotel), method: :delete, data: {confirm: "Are you sure?"} %></p>
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6">
       <%= render 'carousel' %>
         </div>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div id="map" style="width: 100%; position: relative; overflow: hidden;" data-markers="<%= @markers.to_json %>">
+          </div>
+        </div>
       </div>
       <br>
-      <br>
-      <%= render '/rooms/index' %>
       <%= link_to "Add a room", new_hotel_room_path(@hotel) %>
+      <%= render '/rooms/index' %>
+      <br>
     <div class="list" >
       <%= link_to "Book this hotel", new_hotel_booking_path(@hotel), class: "btn btn-success" %>
     </div>
-      <div class="list" >
-        <h3>Stay in this hotel</h3>
-        <%= link_to "Book the room", new_hotel_booking_path(@hotel) %>
-      </div>
       <%= render '/reviews/index' %>
       </div>
-    </div>
-
-  <div id="map" style="width: 25%; position: relative; overflow: hidden;" data-markers="<%= @markers.to_json %>">
     </div>
   </div>
 </div>
