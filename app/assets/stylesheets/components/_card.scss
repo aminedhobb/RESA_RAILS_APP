@@ -44,3 +44,26 @@
 .card:hover{
   opacity: 0.9;
 }
+.card-photo {
+  height: 200px;
+  width:100%;
+  background-size: cover;
+  border-radius: 3px;
+}
+.card-hotel{
+  border: 1px solid rgba(0,0,0,0.4);
+  margin-bottom: 20px;
+  padding: 30px;
+  height: 250px;
+  background: white;
+  h2 {
+    color: #004080;
+  }
+  h3 {
+    color: green;
+    font-size: 15px;
+  }
+}
+.card-hotel:hover {
+  border: 3px solid #004080;
+}
