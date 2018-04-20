@@ -2,6 +2,7 @@
 body {
   margin: 0;
   font-family: Open-sans, sans-serif;
+  padding-top: 73px;
 }
 h1, h2, h3 {
   font-family: Raleway, Helvetica, sans-serif;
@@ -11,5 +12,11 @@ h2 {
   font-weight: bold;
   margin-bottom: 30px;
   margin-top: 0;
+}
+
+#home {
+  margin: 0;
+  font-family: Open-sans, sans-serif;
+  padding-top: 0px;
 }
 
