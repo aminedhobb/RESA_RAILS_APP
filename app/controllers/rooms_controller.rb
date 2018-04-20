@@ -43,12 +43,8 @@ skip_after_action :verify_authorized
   end
 
   def update
-<<<<<<< HEAD
     @hotel =  @room.hotel
-=======
-
     @hotel = room.hotel
->>>>>>> b4f08ad62bf3e4c3d382790a72ab5154e5e05794
     @room.update(room_params)
     redirect_to hotel_path(@hotel), notice: 'Room was successfully updated.'
     authorize @room
