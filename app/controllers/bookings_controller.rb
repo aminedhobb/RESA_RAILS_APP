@@ -8,6 +8,8 @@ class BookingsController < ApplicationController
   def new
     @rooms = @hotel.rooms
     @booking = Booking.new
+    @booking.arriving_date = cookies[:arriving_date]
+    @booking.departing_date = cookies[:departing_date]
     authorize @booking
   end
 
@@ -33,7 +35,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:arriving_date, :departing_date, :room_id)
+    params.require(:booking).permit(:room_id)
   end
 
   def set_hotel

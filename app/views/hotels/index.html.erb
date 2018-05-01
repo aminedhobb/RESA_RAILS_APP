@@ -1,4 +1,13 @@
+<div class="container-dates">
+  <%= form_tag hotels_path, method: :get do %>
+      <%= text_field_tag :city, params[:city], class: "form-control", placeholder: "Find a city",value: @city, id: "flat_address"%>
+      <%= date_field(:departing_date, params[:departing_date],value: cookies[:departing_date], class: "form-control") %>
+      <%= date_field(:arriving_date, params[:arriving_date],value: cookies[:arriving_date], class: "form-control") %>
 
+     <%= submit_tag("Search", class: "btn btn-success") %>
+    <% end %>
+  </div
+</div>
 <div class="container-hotel">
    <div class="row">
     <h1 class="text-center">Hotels</h1>
@@ -9,7 +18,7 @@
         <div class="row">
           <div class="col-xs-5">
         <% if hotel.hotel_attachments.first != nil %>
-          <%= image_tag hotel.hotel_attachments.first.photo_url, class: "card-photo" %>
+          <%= image_tag hotel.hotel_attachments.first.photo_url,height: 175, class: "card-photo" %>
         <% end %>
         </div>
         <div class="col-xs-offset-1 col-xs-6">

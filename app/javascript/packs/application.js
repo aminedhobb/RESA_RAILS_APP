@@ -13,5 +13,4 @@ $(document).ready(function() {
 
           $('.photo').css('background-image', 'url(\''+slide_images[slide_count]+'\')');
           }, 6000);
-
 });
