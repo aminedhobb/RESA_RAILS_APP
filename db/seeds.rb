@@ -146,18 +146,27 @@ Hotel.create!(hotels)
 
 puts "creating hotel_attachments"
 
-sofitel = Hotel.last
-[
-  "http://res.cloudinary.com/dpogqtrea/image/upload/v1525166829/duzmbzxrtycbhbsi9i1w.jpg",
-  "http://res.cloudinary.com/dpogqtrea/image/upload/v1525166832/gcwbcdrch84jgytoyzyk.jpg",
-  "http://res.cloudinary.com/dpogqtrea/image/upload/v1525166834/bxvf8fki5t0gulfasemp.jpg",
-  "http://res.cloudinary.com/dpogqtrea/image/upload/v1525166836/uabnaiuvqhrtdxvexm6x.jpg",
-  "http://res.cloudinary.com/dpogqtrea/image/upload/v1525166838/tpoa67re30s8ipiqbjhq.jpg",
-  "http://res.cloudinary.com/dpogqtrea/image/upload/v1525166840/jax26dxwfban6qvrju8d.jpg",
-  "http://res.cloudinary.com/dpogqtrea/image/upload/v1525166842/nd7bc4kfda2vlaf1szrs.jpg"
-].each do |url|
+sofitel = Hotel.find_by(name: 'Sofitel Casablanca')
+image_urls = [
+ "image/upload/v1525181478/dgokr9yetj9zmyechyvx.jpg",
+ "image/upload/v1525181480/jyznc8mvcrsm54zzfb5y.jpg",
+ "image/upload/v1525181482/svrofuldutbvygugbg5t.jpg",
+ "image/upload/v1525181483/no19boklkuoscr3gt1jx.jpg",
+ "image/upload/v1525181485/lscuchxcbxgabslowdhp.jpg",
+ "image/upload/v1525181488/h5j4pabcwmxssjydqjrn.jpg",
+ "image/upload/v1525181490/sba6dnmogr6uucqpxy6u.jpg"
+]
+
+image_urls.each do |url|
   ha = HotelAttachment.new(hotel_id: sofitel.id)
-  ha.save validate: false
+  ha.save! validate: false
   ha.update_columns photo: url
 end
+
+Hotel.find_each do |hotel|
+  ha = HotelAttachment.new(hotel: hotel)
+  ha.save! validate: false
+  ha.update_columns photo: image_urls[hotel.id % image_urls.count]
+end
+
 puts "Finished!"
