@@ -1,5 +1,5 @@
 
-<div class="navbar-wagon navbar-fixed-top navbar-wagon-white ">
+<div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to image_tag("logo.png", class: "logo"), root_path%>
   <!-- Right Navigation -->
@@ -48,9 +48,9 @@
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
+        <li><%= link_to "Profile", edit_user_registration_path %></li>
+        <li><%= link_to "Bookings", bookings_path %></li>
+        <li><%= link_to "Log out", destroy_user_session_path %></li>
       </ul>
     </div>
   </div>
