@@ -5,6 +5,7 @@ before_action :set_hotel, only: [:index, :new, :create]
 before_action :set_room, only: [:edit, :update, :destroy]
 
   def index
+    @hotel = @room.hotel
     @rooms = Room.where(hotel: @hotel)
   end
 
@@ -43,13 +44,15 @@ before_action :set_room, only: [:edit, :update, :destroy]
   end
 
   def update
-    @hotel.room.update(room_params)
+    @hotel =  @room.hotel
+    @room.update(room_params)
     redirect_to hotel_path(@hotel), notice: 'Room was successfully updated.'
     authorize @room
   end
 
   def destroy
-    @room.hotel.destroy
+    @hotel =  @room.hotel
+    @room.destroy
     redirect_to hotel_path(@hotel), notice: 'Room was successfully destroyed.'
     authorize @room
   end

@@ -1,38 +1,30 @@
-      <table>
+<table class="table table-striped" style="width: 100%">
+  <tr>
+    <th scope="col">Category</th>
+    <th scope="col">Capacity</th>
+    <th scope="col">Price</th>
+  </tr>
+  <tr>
         <% @hotel.rooms.each do |room| %>
-        <tr>
-          <td>
-            <%= room.category %>
-            <%= room.capacity %>
-          </td>
-          <td>
-            <%= room.price %>
-          </td>
-          <td>
+           <td><%= room.category %></td>
+           <td><%= room.capacity %></td>
+           <td><%= room.price %>DH</td>
+            <%if policy(room).edit? %>
+            <td> <%= link_to "Edit", edit_room_path(room) %></td>
+            <% end %>
+            <%if policy(room).destroy? %>
+              <td><%= link_to "Delete", room_path(room), method: :delete, data: { confirm: "Are you sure?" } %></td>
+            <% end %>
+  </tr>
+  <% end %>
+</table>
+            <% @hotel.rooms.each do |room| %>
             <% room.room_attachments.each do |p| %>
               <%= image_tag p.photo_url %>
               <%= link_to "Edit Attachment", edit_room_attachment_path(p) %>
-            <% if policy(p).destroy? %>
-        <%= link_to "delete Attachment", room_attachment_path(p),method: :delete, data: {confirm: "Are you sure?"} %>
-          <% end %>
-          <% end %>
-          </td>
-          <td>
-            <%if policy(room).edit? %>
-              <%= link_to "Edit", edit_room_path(room) %>
+              <% if policy(p).destroy? %>
+                <%= link_to "delete Attachment", room_attachment_path(p),method: :delete, data: {confirm: "Are you sure?"} %>
+              <% end %>
             <% end %>
-          </td>
-          <%if policy(room).destroy? %>
-              <%= link_to "Delete", room_path(room), method: :delete, data: { confirm: "Are you sure?" } %>
-            <% end %>
-        </tr>
         <% end %>
 
-      </table>
-    <div class="list" >
-      <h3>Hotel dashboard</h3>
-      <%= link_to "Add a room", new_hotel_room_path(@hotel) %>
-    </div>
-    <div class="list" >
-      <h3>Customer dashboard</h3>
-  </div>
