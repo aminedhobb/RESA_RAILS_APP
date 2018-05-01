@@ -3,8 +3,8 @@
     <div class= "col-sm-8 col-sm-offset-2">
       <h1 class="text-center"> Book your stay in <%= @hotel.name %> </h1>
       <%= simple_form_for [@hotel, @booking], :html => { :multipart => true } do |f| %>
-        <%= f.input :arriving_date, as: :date, html5: true, placeholder: Date.today %>
-        <%= f.input :departing_date, as: :date, html5: true, placeholder: Date.today + 1%>
+        <%= f.input :arriving_date, as: :date, html5: true %>
+        <%= f.input :departing_date, as: :date, html5: true %>
         <%= f.input :room_id, collection: @rooms, label_method: :category, value_method: :id, error: 'Please choose a room'  %>
         <%= f.button :submit, class: "btn btn-success", value: "Book"%>
       <% end %>

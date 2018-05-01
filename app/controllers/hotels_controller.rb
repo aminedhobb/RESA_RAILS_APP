@@ -8,6 +8,8 @@ class HotelsController < ApplicationController
       else
         @hotels = Hotel.all
     end
+    cookies[:arriving_date] = params[:arriving_date]
+    cookies[:departing_date] = params[:departing_date]
   end
 
   def show

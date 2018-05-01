@@ -5,8 +5,7 @@
     <%= form_tag hotels_path, class: 'form-inline', method: :get do %>
       <%= text_field_tag :city, params[:city], class: "form-control", placeholder: "Find a city", id: "flat_address"%>
       <%= date_field(:departing_date, params[:departing_date], value: Date.today, class: "form-control") %>
-      <%= date_field(:arriving_date, params[:arriving_date], value: Date.today+1,class: "form-control") %>
-
+      <%= date_field(:arriving_date, params[:arriving_date], value: Date.today + 1,class: "form-control") %>
       <%= submit_tag("Search", class: "btn btn-success") %>
     <% end %>
   </div>

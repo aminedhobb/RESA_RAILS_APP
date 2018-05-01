@@ -1,5 +1,5 @@
 .card {
-  height: 250px;
+  height: 175px;
   background-size: cover !important;
   color: white;
   position: relative;
@@ -63,7 +63,7 @@
     color: green;
     font-size: 15px;
   }
-}
-.card-hotel:hover {
-  border: 3px solid #004080;
+  &:hover {
+    border: 2px solid blue;
+  }
 }
